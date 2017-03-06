@@ -26,7 +26,6 @@ if (suppressWarnings(require("doParallel"))==FALSE) {
     library("doParallel");
     }
 
-
 if (suppressWarnings(require("plyr"))==FALSE) {
     install.packages("plyr",repos="http://cran.cnr.berkeley.edu/");
     library("plyr");
@@ -96,4 +95,3 @@ pullDRData<-function(DRDataList) {
       }
 
 ############################################ Download Datasets from API  ####################################
-# 
