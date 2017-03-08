@@ -46,9 +46,9 @@ if (length(CommandArgument)!=3) {
     Start<-1;
     End<-50;
     } else {
-    Start<-as.numeric(CommandArgument[2]))
-    End<-as.numeric(CommandArgument[3]))
-    }   
+    Start<-as.numeric(CommandArgument[2])
+    End<-as.numeric(CommandArgument[3])
+    }  
 
 #############################################################################################################
 ########################################### DOWNLOAD DATA, RESCUE ###########################################
@@ -81,16 +81,16 @@ singlePackage<-function(PackageName) {
           if (is.null(PackageInfo[[Name]])) {next;}
           PackageFrame[Name,1]<-PackageInfo[[Name]]
           }
-      return(PackageFrame)
+      return(t(PackageFrame))
       }
 
 # Macro to loop through the entire DRData subset
 pullDRData<-function(DRDataList) {
       FinalList<-vector("list",length=length(DRDataList))
       for (i in 1:length(DRDataList)) {
-          FinalList[[i]]<-singlePackage(DRDataList[[i]])
+          FinalList[[i]]<-suppressWarnings(singlePackage(DRDataList[[i]])) # ignore the stupid organization warning
           }
-      FinalList<-do.call(rbind(FinalList))
+      FinalList<-do.call(rbind,FinalList)
       return(FinalList)
       }
 
